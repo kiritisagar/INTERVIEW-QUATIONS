@@ -1,0 +1,260 @@
+## What are EC2 instances?
+- EC2 instances are virtual servers in Amazon's Elastic Compute Cloud (EC2) for running applications on the AWS infrastructure.
+
+## What is an AMI?
+- An Amazon Machine Image (AMI) is a template that contains the software configuration (OS, application server, applications) required to launch an instance.
+
+## Explain the process of creating a custom AMI (Amazon Machine Image)?
+- Launch an EC2 instance and customize it with your applications, configurations, and data.
+Stop the instance and create an AMI from it in the AWS Management Console or using AWS CLI.
+Use the custom AMI to launch new instances with the same configurations and applications.
+
+## How do you share an AMI with other AWS accounts?
+Modify the AMI permissions to make it public or specify AWS account IDs with whom the AMI should be shared.
+The other AWS account owner can then access and use the shared AMI to launch instances.
+
+## What are the benefits of using custom AMIs?
+- Ensure consistency and repeatability of instance configurations.
+Speed up instance provisioning by launching instances from pre-configured templates.
+Include specific software, patches, and configurations tailored to your application requirements.
+
+## What is the use of AMI?
+- An AMI (Amazon Machine Image) is a template for launching EC2 instances with pre-configured settings.
+
+## Explain the difference between public and private AMIs.?
+Public AMIs: Available to all AWS users and can be used to launch instances by any AWS account.
+Private AMIs: Owned by a specific AWS account and can only be used to launch instances within that account unless explicitly shared with other accounts.
+
+## How can you update an existing AMI?
+Launch an instance from the existing AMI.
+Apply updates, patches, or new configurations to the instance.
+Stop the instance, create a new AMI from it, and update the launch configurations or Auto Scaling groups to use the new AMI.
+
+## What are the different methods for sharing custom AMIs across AWS accounts?
+Modify AMI permissions to share with specific AWS account IDs.
+Make an AMI public, allowing any AWS account to use it.
+Share encrypted AMIs with specific AWS accounts using AWS KMS.
+
+## What are EC2 instance types?
+Types include General Purpose (e.g., t3, m5), Compute Optimized (e.g., c5), Memory Optimized (e.g., r5), Storage Optimized (e.g., i3), and Accelerated Computing (e.g., p3).
+
+## What are the different EC2 instance purchasing options available in AWS?
+On-Demand Instances
+Reserved Instances
+Spot Instances
+Dedicated Instances
+Dedicated Hosts
+
+## How do you secure your EC2 instances?
+1.security groups
+2.key pairs, IAM roles.
+3.Patch and Update Regularly· 
+4.Implement Network Access Control Lists (ACLs) for an additional layer of security.
+5.Enable MFA for AWS accounts and IAM users to add an extra layer of security.
+6.Use SSL/TLS for data in transit to protect sensitive data.
+
+## Can you explain the steps to create a highly available and fault-tolerant architecture using EC2?
+Use multiple Availability Zones (AZs).
+Distribute instances across AZs.
+Use Elastic Load Balancers (ELB) to distribute traffic.
+Implement Auto Scaling for scalability.
+Use Amazon RDS with Multi-AZ deployment for databases.
+
+## How would you troubleshoot a failing to connect EC2 instance?
+1.Verify Instance Status
+Check Instance State: Ensure the instance is running.
+Check System Status Checks: Confirm that both the instance status checks and system status checks have passed. These can be found in the EC2 console under the "Status Checks" tab.
+
+2. Verify Security Group Settings
+Inbound Rules: Ensure the security group associated with the instance allows inbound traffic on the required port (e.g., port 22 for SSH, port 3389 for RDP).
+Outbound Rules: Ensure the security group allows outbound traffic.
+
+3. Verify Network ACLs
+Inbound and Outbound Rules: Check the Network Access Control Lists (ACLs) for the subnet to ensure they allow the necessary traffic. Both inbound and outbound rules must be correctly configured.
+
+4. Verify Route Tables
+Correct Routing: Ensure the route table associated with the subnet has the correct routes for internet access (e.g., a route to the Internet Gateway for public instances).
+
+5. Check Key Pair and SSH/RDP Configuration
+Correct Key Pair: Ensure you are using the correct private key (.pem file) associated with the key pair used when launching the instance.
+
+6. Verify Instance's Network Configuration
+Elastic IP: If using an Elastic IP, ensure it is associated with your instance.
+Public IP: Ensure the instance has a public IP if it is supposed to be accessible from the internet.
+
+7. Check Instance Configuration
+Security Groups: Verify that the correct security group is attached to the instance.
+IAM Roles: Ensure the instance has the necessary IAM role if it requires access to AWS services.
+
+8. Check Local Firewall and Client Configuration
+Local Firewall: Ensure your local firewall or antivirus is not blocking the connection.
+Correct Command/Tool: Ensure you are using the correct command or tool to connect.
+
+9. Review Instance Logs
+System Logs: Check the system logs for any errors or warnings. You can access the system logs from the EC2 console by right-clicking the instance and selecting "Get System Log".
+Application Logs: If an application is failing to start, review its logs.
+
+10. Use EC2 Serial Console (for advanced troubleshooting)
+EC2 Serial Console: If all else fails, use the EC2 Serial Console for further troubleshooting, especially if the instance is not responding to network connections.
+
+11. Instance Metadata Service
+Instance Metadata: Access the instance metadata to check network interfaces and other configuration details:
+
+## How do you scale EC2 instances?
+You can scale EC2 instances vertically by resizing the instance type or horizontally by adding more instances to your application (using Auto Scaling).
+
+## How do you configure a highly available web application on EC2?
+Use multiple EC2 instances across different Availability Zones with an Elastic Load Balancer (ELB) to distribute traffic. Enable Auto Scaling to handle traffic changes and Route 53 for DNS failover.
+
+## How do you secure an EC2 instance?
+Use Security Groups to control inbound/outbound traffic, IAM roles for instance permissions, regularly patch the OS and applications, use SSH keys for access, and encrypt EBS volumes and data in transit.
+
+## How can you migrate an on-premises application to EC2?
+Use the AWS Server Migration Service (SMS) to automate the migration process, or manually create AMIs of your on-premises servers and launch EC2 instances using those AMIs.
+
+## Describe the lifecycle of an EC2 instance.?
+The lifecycle stages are Pending, Running, Stopping, Stopped, Shutting-down, and Terminated.
+
+## How do you backup an EC2 instance?
+You can create snapshots of the EBS volumes attached to your instance, or create an AMI from your instance. Regularly scheduled snapshots or AMIs can be automated using AWS Backup.
+
+## How would you migrate an EC2 instance from one region to another?
+Create an AMI from the instance, copy the AMI to the target region, and launch a new instance from the copied AMI in the target region.
+
+## What steps would you take if an EC2 instance becomes unresponsive?
+·  Check instance status checks and logs via the EC2 console, reboot the instance if necessary, detach and reattach the EBS volumes, and, if the issue persists, create an AMI and launch a new instance from it.
+
+## How do you secure an EC2 instance running a web server?
+·  Use Security Groups to allow only necessary traffic, implement IAM roles for permissions, use SSL/TLS for data encryption in transit, ensure the server software is up to date, and regularly audit logs and configurations.
+
+## How can you protect your EC2 instances from DDoS attacks?
+Use AWS Shield, AWS WAF, and CloudFront to provide DDoS protection. Configure Security Groups and Network ACLs to restrict access, and monitor traffic with CloudWatch and VPC Flow Logs.
+
+## What is the difference between a snapshot and an AMI?
+A snapshot is a backup of an EBS volume, while an AMI (Amazon Machine Image) is a backup of an entire EC2 instance, including the root volume and any additional volumes.
+
+## What are some ways to reduce EC2 costs?
+Use Reserved Instances or Savings Plans for predictable workloads, leverage Spot Instances for flexible workloads, use Auto Scaling to optimize instance count, and continuously monitor and right-size instances.
+
+## What are the differences between public IP, Elastic IP, and Private IP addresses in EC2?
+Public IP: Dynamically assigned to an instance from AWS's pool of public IP addresses. Changes when the instance is stopped and started.
+Elastic IP (EIP): Static IP address that you can assign to your instance. It remains associated with the instance until you explicitly disassociate it.
+Private IP: Assigned to the instance from the VPC's IPv4 address range. It's retained as long as the instance is running and can be reused when the instance is stopped and started.
+
+## What is the difference between AWS CloudFormation and AWS Elastic Beanstalk?
+AWS CloudFormation: Infrastructure as Code service that allows you to define and provision AWS infrastructure resources in a declarative template. It supports a wide range of AWS services.
+AWS Elastic Beanstalk: Platform as a Service (PaaS) offering that simplifies deployment, monitoring, and scaling of applications. It manages the infrastructure and application stack for you, focusing on the application code.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+EBS:
+## Explain the concept of EBS volume types and their use cases.?
+General Purpose SSD (gp3, gp2): Balanced price/performance for most workloads.
+Provisioned IOPS SSD (io2, io1): High-performance SSD for latency-sensitive transactional workloads.
+Throughput Optimized HDD (st1): Low-cost HDD for frequently accessed, throughput-intensive workloads.
+Cold HDD (sc1): Lowest cost HDD for less frequently accessed data.
+
+## What is the maximum size of an Amazon EBS volume you can create?
+You can create EBS volumes up to 16 TiB in size.
+
+## What is an EBS snapshot in AWS?
+An EBS snapshot is a point-in-time backup of an EBS volume stored in Amazon S3. It captures incremental changes made to the volume since the last snapshot.
+
+## How do you create an EBS snapshot?
+You can create an EBS snapshot using the AWS Management Console, AWS CLI, or SDK:
+Select the EBS volume you want to snapshot.
+Choose "Create Snapshot" and provide a description.
+Optionally, add tags for organization and tracking.
+
+## How can you reduce the startup time of EC2 instances?
+Use optimized Amazon Machine Images (AMIs).
+Preload necessary data and dependencies into the AMI.
+Use instance types that offer faster initialization.
+Utilize EC2 Hibernate to save and resume the instance state.
+
+## What is an EC2 Auto Scaling group? How does it work?
+EC2 Auto Scaling Group: Manages the scaling of EC2 instances based on demand. It automatically adds or removes instances to maintain the desired capacity and responds to metrics or custom policies defined by the user.
+
+## How can you securely connect to your EC2 instances located within a private subnet?
+Use a bastion host (jump host) deployed in a public subnet to SSH or RDP into instances in private subnets.
+Use AWS Systems Manager Session Manager for secure, browser-based access without needing to open inbound ports.
+
+## Step Guide to Mounting an EBS Volume on Linux EC2 Instance?
+Step1:
+-create volume
+-Attach the EBS Volume to the EC2 Instance
+
+Step2:
+Connect to Your EC2 Instance:
+
+Verify Attached Volume:
+(lsblk)This command lists all block devices attached to the instance. The attached EBS volume should appear in the list.
+
+Step3:
+Format and Mount the EBS Volume
+
+If the EBS volume is newly attached or not formatted, you may need to format it. 
+sudo mkfs -t ext4 /dev/xvdf
+Replace /dev/xvdf with the device name of your attached volume.
+(explanation mkfs - craete filesystem t-tag extension4 as and then filesystem created)
+
+Step4:
+Create a Mount Point:
+
+Create a directory as a mount point for the volume. 
+(sudo mkdir /data)
+Replace /data with your preferred directory path.
+
+Step5:
+Mount the Volume:
+
+sudo mount /dev/xvdf /data
+Replace /dev/xvdf with the device name of your EBS volume and /data with your mount point.
+
+Step6:
+Verify Mounting:
+
+ls /data
+If the command lists the contents of the volume without errors, the mount was successful.
+
+Step7:
+Edit /etc/fstab:
+
+sudo vi /etc/fstab
+
+Add Mount Entry:
+
+Add a line to /etc/fstab specifying the device, mount point, file system type, mount options, dump, and pass values. For example:
+
+/dev/xvdf   /data   ext4   defaults,nofail   0   2
+Save and close the file 
+
+
+## What is a Target Group in AWS?
+A Target Group is a logical grouping of instances or IP addresses that an Elastic Load Balancer uses to distribute incoming traffic. Target groups enable you to direct specific traffic to a group of targets (such as EC2 instances) that handle that traffic.
+
+## What are the types of targets you can register with a Target Group?
+You can register the following types of targets with a Target Group:
+EC2 instances
+IP addresses
+Lambda functions (for Application Load Balancer)
+Containers (for tasks running on Amazon ECS)
+
+## How do Target Groups work with load balancers?
+Load balancers route incoming traffic to the targets registered with the Target Group based on the configured listener rules. The health checks ensure that traffic is only routed to healthy targets.
+
+## How do you configure health checks for a Target Group?
+Navigate to the Load Balancers section in the EC2 Dashboard.
+Select the load balancer and choose the Target Group.
+Click on the "Health Check" tab.
+Configure the protocol, path, port, healthy/unhealthy thresholds, interval, and timeout settings.
+
+## What is Auto Scaling in AWS?
+Auto Scaling is a service that automatically adjusts the number of EC2 instances in an Auto Scaling group based on predefined conditions, ensuring the right amount of compute capacity is available to handle the load
+
+## How do you create an Auto Scaling Group?
+Create a Launch Configuration: Define the AMI, instance type, key pair, security groups, and other settings.
+Define Auto Scaling Group: Specify the launch configuration, VPC, subnets, desired capacity, minimum and maximum size.
+Set Scaling Policies: Define policies for scaling in and out based on CloudWatch alarms or scheduled actions.
+
+## How does Auto Scaling handle instance health?
+Answer: Auto Scaling continuously monitors the health of instances in the Auto Scaling group. If an instance is found to be unhealthy (failing health checks), Auto Scaling terminates the unhealthy instance and launches a new one to replace it, maintaining the desired capacity.
