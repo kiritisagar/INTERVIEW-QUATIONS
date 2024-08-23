@@ -1,0 +1,60 @@
+What is an S3 object?
+An S3 object consists of the data (file), metadata, and a unique identifier within a bucket. Objects can be any type of file, such as documents, images, videos, etc
+
+Explain the concept of an S3 bucket.
+An S3 bucket is a container for storing objects (files and their metadata). Each bucket is unique within the S3 service and can be used to store any number of objects.
+
+What is an S3 Lifecycle Policy?
+An S3 Lifecycle Policy allows you to define actions to automatically transition objects to different storage classes or delete them after a specified period.
+
+How can you secure data in S3?
+You can secure data in S3 using bucket policies, access control lists (ACLs), AWS Identity and Access Management (IAM) policies, and by enabling encryption (server-side or client-side).
+
+Explain the different storage classes in S3?
+S3 Standard: General-purpose storage with high durability and availability.
+S3 Standard-IA (Infrequent Access): For data that is accessed less frequently but requires rapid access.
+S3 One Zone-IA: For infrequently accessed data stored in a single availability zone.
+S3 Glacier: Low-cost storage for archival data with retrieval times ranging from minutes to hours.
+S3 Glacier Deep Archive: Lowest-cost storage class for long-term archival data with retrieval times of 12 hours or more
+
+What is the purpose of the S3 Transfer Acceleration feature?
+S3 Transfer Acceleration uses the globally distributed edge locations of Amazon CloudFront to accelerate the upload of objects to S3.
+
+How would you set up a static website using S3?
+To set up a static website, you create an S3 bucket, upload your static content, enable static website hosting on the bucket, and set up the bucket policy to allow public read access.
+
+What is Pre-Signed URL in S3?
+A pre-signed URL is a URL that you can provide to your users to grant temporary access to a specific S3 object. The URL is signed with your credentials and is valid for a specified duration.
+
+How do you replicate data across regions in S3?
+You can use Cross-Region Replication (CRR) to replicate objects from one S3 bucket to another in a different AWS region. This is useful for disaster recovery and data locality
+
+What is S3 Object Lock, and how is it used?
+S3 Object Lock is a feature that prevents an object from being deleted or overwritten for a fixed amount of time or indefinitely. It is used for regulatory compliance and data protection, ensuring data immutability.
+
+How do you set up cross-account access to an S3 bucket?
+Use bucket policies and IAM roles to grant cross-account access. The bucket owner creates a bucket policy that grants the external account access, and the external account can assume an IAM role with permissions to access the bucket.
+
+How does Amazon S3 handle object deletions?
+S3 supports two types of deletions:
+Simple Deletion: Deletes the object without maintaining any version history.
+Versioned Deletion: If versioning is enabled, S3 adds a delete marker to the object, preserving previous versions.
+
+What is the maximum size of an object that can be stored in Amazon S3?
+The maximum size for a single object stored in Amazon S3 is 5 terabytes (TB).
+
+How can you secure data stored in Amazon S3?
+Data in Amazon S3 can be secured through:
+Access Control: Using bucket policies and access control lists (ACLs) to manage access permissions.
+Encryption: Encrypting data at rest using server-side encryption (SSE) or client-side encryption before uploading.
+IAM Policies: Defining IAM policies to control who can manage and access your S3 resources.
+Access Logging: Enabling logging to track access requests to your S3 buckets.
+
+How does Versioning work in Amazon S3?
+Versioning allows you to keep multiple variants of an object in the same bucket. It helps in protecting against accidental deletion or overwrites by retaining all versions of an object.
+
+What are the limitations of Amazon S3?
+Some limitations of Amazon S3 include:
+Object size limit: Maximum size of a single object is 5 terabytes.
+Bucket naming constraints: Bucket names must be globally unique and comply with DNS naming conventions.
+Request rate limits: S3 has request rate limits that vary by operation type and are designed to protect the service from abuse.
